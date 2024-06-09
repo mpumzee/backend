@@ -11,7 +11,7 @@ wss.on("connection", (ws) => {
 
    // Send Welcome message
       if (ws.readyState === WebSocket.OPEN) {         
-        ws.send(JSON.stringify({ message: "Welcome to Axis Solutions. I am a chatbot assigned to help you.", owner:"assistant" }));
+        ws.send(JSON.stringify({ message: "Welcome to Axis Solutions. Paste the exact error you are getting", owner:"assistant" }));
       }
 
    //Business logic starts here
