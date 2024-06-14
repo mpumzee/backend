@@ -11,7 +11,7 @@ wss.on("connection", (ws) => {
 
    // Send Welcome message
       if (ws.readyState === WebSocket.OPEN) {         
-        ws.send(JSON.stringify({ message: "Welcome to Axis Solutions. Enter 1 for prices and your Erro Code for error solutions", owner:"assistant" }));
+        ws.send(JSON.stringify({ message: "Welcome to Axis Solutions. Enter 1 for prices, 2 for banking details and your Error Code for error solutions", owner:"assistant" }));
       }
 
    //Business logic starts here
@@ -25,6 +25,9 @@ wss.on("connection", (ws) => {
             ws.send(JSON.stringify({message:"FDMS implementations 150USD ", owner:"assistant"}))
             ws.send(JSON.stringify({message:"Call-Out Fee 100USD ", owner:"assistant"}))
             ws.send(JSON.stringify({message:"Re-Installation of Revmax 60USD", owner:"assistant"}))
+            break;
+        case "2":
+            ws.send(JSON.stringify({message:"Account Name: AXIS SOLUTIONS PRIVATE LIMITED | Bank: STANBIC BANK ZIMBABWE | Usd Account : 9140000955751 |Branch: BELGRAVIA | Currency: NOSTRO", owner:"assistant"}))
             break;
         case "RevMaxnotfound":
             ws.send(JSON.stringify({ message: "This error means that no RevMax device is plugged into your machine. Please check your hardware.", owner: "assistant" }));
