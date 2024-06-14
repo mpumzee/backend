@@ -11,7 +11,7 @@ wss.on("connection", (ws) => {
 
    // Send Welcome message
       if (ws.readyState === WebSocket.OPEN) {         
-        ws.send(JSON.stringify({ message: "Welcome to Axis Solutions. Paste the exact error you are getting", owner:"assistant" }));
+        ws.send(JSON.stringify({ message: "Welcome to Axis Solutions. Enter 1 for prices and your Erro Code for error solutions", owner:"assistant" }));
       }
 
    //Business logic starts here
@@ -19,6 +19,13 @@ wss.on("connection", (ws) => {
     let errorCode = message.toString('utf8').replace(/"/g, "");
     console.log(errorCode);
     switch (errorCode) {
+        case "1":
+            ws.send(JSON.stringify({message:"Revmax Device 595USD", owner:"assistant"}))
+            ws.send(JSON.stringify({message:"RevMax License 185USD ", owner:"assistant"}))
+            ws.send(JSON.stringify({message:"FDMS implementations 150USD ", owner:"assistant"}))
+            ws.send(JSON.stringify({message:"Call-Out Fee 100USD ", owner:"assistant"}))
+            ws.send(JSON.stringify({message:"Re-Installation of Revmax 60USD", owner:"assistant"}))
+            break;
         case "RevMaxnotfound":
             ws.send(JSON.stringify({ message: "This error means that no RevMax device is plugged into your machine. Please check your hardware.", owner: "assistant" }));
             break;
